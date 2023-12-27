@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Bundle with integrationtest
-Bundle-SymbolicName: osgi-test
+Bundle-SymbolicName: tycho-bnd-test
 Bundle-Version: 1.0.0
 Export-Package: org.eclipse.demo.tycho
 Automatic-Module-Name: bundle
