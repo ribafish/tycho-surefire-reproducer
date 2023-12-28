@@ -10,7 +10,13 @@ Both of these projects are based on demos available in the tycho repository avai
 
 The tycho-surefire-plugin is the preferred whenever you want to write tests that require an OSGi Framework running and is executed in the integration-test phase of your build, this is similar to what PDE offers as Plugin Tests. This is set up using `eclipse-plugin` packaging and configure an additional execution of the `tycho-surefire-plugin:plugin-test` goal with a test-source folder using the standard maven layout.
 
-The test in this project uses actual plugin-test osgi framework to execute the test.
+In Eclipse plugin development using Tycho, the `src/main/resources/META-INF/MANIFEST.MF` file is used to define the manifest information for your plugin or bundle. This file is a critical component of OSGi-based applications and plays a central role in specifying the metadata and dependencies of your plugin. 
+
+The test in this project uses actual plugin-test OSGi framework to execute the test.
+
+#### tycho-plugin-test-min
+
+Similar to `tycho-plugin-test`, except that all the code actually using osgi framework is removed, however the setup still executes `tycho-surefire:plugin-test` goal, with Develocity still not detecting the test(s) executed.
 
 #### tycho-bnd-test
 
