@@ -1,8 +1,18 @@
 # Tycho-surefire-plugin reproducers
 
+This repo has a couple of reproducers for `tycho-surefire` tests, which are not detected as tests in Develocity.
+
+There's 4 separate maven projects in there, 2 full ones:
+* `tycho-plugin-test`: uses TychoIntegrationTestMojo
+* `tycho-bnd-test`: uses BndTestMojo
+
+And the two `*-min` projects are copies of the two above, but I tried to remove as much as I could without breaking the build. You should be able to base integration tests on these two projects, but I'm not sure if I can remove much more.
+
 Each of the reproducers is set up as their own project. To test any of those, you need to run `mvn clean verify` (or `mvn clean install`) in their respective directory.
 
-Both of these projects are based on demos available in the tycho repository available [here](https://github.com/eclipse-tycho/tycho/tree/main/demo/testing/), with some explanations of the demos [here](https://tycho.eclipseprojects.io/doc/master/TestingBundles.html)
+All of these projects are based on demos available in the tycho repository available [here](https://github.com/eclipse-tycho/tycho/tree/main/demo/testing/), with some explanations of the demos [here](https://tycho.eclipseprojects.io/doc/master/TestingBundles.html)
+
+Note: in the [demos explanation](https://tycho.eclipseprojects.io/doc/master/TestingBundles.html) there's a third type of tests using [maven-surefire-plugin](https://tycho.eclipseprojects.io/doc/master/TestingBundles.html#maven-surefire-plugin) - even though these need the `eclipse-plugin` packaging, they don't need OSGi framework (or have it mocked) and are regular unit tests from maven surefire, so they are correctly detected by Develocity. 
 
 ## Requirements
 
