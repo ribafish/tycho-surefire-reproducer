@@ -1,13 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.eclipse.tycho.demo</groupId>
-		<artifactId>tycho-testing-parent</artifactId>
-		<version>1.0.0</version>
-		<relativePath>pom-parent.xml</relativePath>
-	</parent>
+	<groupId>org.eclipse.tycho.demo</groupId>
 	<artifactId>tycho-plugin-test</artifactId>
 	<packaging>eclipse-plugin</packaging>
+	<version>1.0.0</version>
+	<properties>
+		<target-platform>https://download.eclipse.org/releases/2022-12/</target-platform>
+		<tycho-version>4.0.4</tycho-version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>platform</id>
+			<url>${target-platform}</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -32,6 +39,20 @@
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-ds-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<enabled>true</enabled>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<executions>
 					<execution>
@@ -52,5 +73,19 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<failIfNoTests>true</failIfNoTests>
+						<printBundles>true</printBundles>
+						<!-- <showEclipseLog>true</showEclipseLog> -->
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
