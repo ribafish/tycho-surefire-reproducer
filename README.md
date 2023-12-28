@@ -1,8 +1,12 @@
 # Tycho-surefire-plugin reproducers
 
-Each of the reproducers is set up as their own project. To test any of those, you need to run `mvn clean install` in their respective directory.
+Each of the reproducers is set up as their own project. To test any of those, you need to run `mvn clean verify` (or `mvn clean install`) in their respective directory.
 
 Both of these projects are based on demos available in the tycho repository available [here](https://github.com/eclipse-tycho/tycho/tree/main/demo/testing/), with some explanations of the demos [here](https://tycho.eclipseprojects.io/doc/master/TestingBundles.html)
+
+### Requirements
+
+The reproducers require **Java 17+** (tested with 17 and 21) and **Maven 3.9+** (tested using Maven 3.9.5). 
 
 ### Reproducers in this repo
 
