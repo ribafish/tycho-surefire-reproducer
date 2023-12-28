@@ -12,7 +12,7 @@ The tycho-surefire-plugin is the preferred whenever you want to write tests that
 
 In Eclipse plugin development using Tycho, the `src/main/resources/META-INF/MANIFEST.MF` file is used to define the manifest information for your plugin or bundle. This file is a critical component of OSGi-based applications and plays a central role in specifying the metadata and dependencies of your plugin. 
 
-The test in this project uses actual plugin-test OSGi framework to execute the test.
+The test in this project uses actual plugin-test OSGi framework to execute the test. The test itself is executed using `org.eclipse.tycho.surefire.TychoIntegrationTestMojo`.
 
 #### tycho-plugin-test-min
 
@@ -22,5 +22,9 @@ Similar to `tycho-plugin-test`, except that all the code actually using osgi fra
 
 The tycho-surefire-plugin has also support for [bnd-testing](https://bnd.bndtools.org/chapters/310-testing.html), this is like `plugin-test` but uses the BND testing framework. There is currently no JDT/PDE equivalent but this integrates nicely with the [OSGi Testing Support](https://github.com/osgi/osgi-test) and allows to execute prebuild test-bundles.
 
-The test in this project uses actual bnd-testing osgi framework to execute the test.
+The test in this project uses actual bnd-testing osgi framework to execute the test. The test itself is executed using `org.eclipse.tycho.surefire.BndTestMojo`.
+
+#### tycho-bnd-test-min
+
+Similar to `tycho-bnd-test`, except that all the code actually using osgi framework is removed, however the setup still executes `tycho-surefire:bnd-test` goal, with Develocity still not detecting the test(s) executed.
 
